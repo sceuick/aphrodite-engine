@@ -709,7 +709,7 @@ async def load_lora(lora: LoRAModulePath, raw_request: Request):
             status_code=500
         )
     completion(raw_request).add_lora(lora)
-    if args.enable_lora is False:
+    if raw_request.app.state.args.enable_lora is False:
         logger.error("LoRA is not enabled in the engine. "
                      "Please start the server with the "
                      "--enable-lora flag!")
